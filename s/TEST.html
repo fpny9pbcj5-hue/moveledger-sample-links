@@ -5,8 +5,31 @@
 <title>MoveLedger</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body style="font-family:Arial,sans-serif;max-width:32rem;margin:3rem auto;padding:0 1.2rem">
+<body style="font-family:Arial,sans-serif;max-width:32rem;margin:3rem auto;padding:1rem">
 <h1>Sample request received</h1>
-<p>TEST click. No consumer records on this page.</p>
+<p id="st">Sending alert…</p>
+<script>
+(function () {
+  var token = "TEST";
+  var payload = {
+    _subject: "MoveLedger click TEST",
+    token: token,
+    message: "TEST click. Do not send consumer records."
+  };
+  var opts = {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(payload)
+  };
+  Promise.all([
+    fetch("https://formsubmit.co/ajax/dannyg013@gmail.com", opts),
+    fetch("https://formsubmit.co/ajax/9542030385@tmomail.net", opts)
+  ]).then(function () {
+    document.getElementById("st").textContent = "Alert sent. TEST does not release records.";
+  }).catch(function () {
+    document.getElementById("st").textContent = "Alert failed. Reply to MoveLedger if you still want the sample.";
+  });
+})();
+</script>
 </body>
 </html>
